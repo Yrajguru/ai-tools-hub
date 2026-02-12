@@ -1,8 +1,50 @@
+/* ✅ GLOBAL STYLING */
+
 body {
   font-family: Arial, sans-serif;
   background: #f5f7fb;
   margin: 0;
 }
+
+/* ✅ NAVBAR */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: #0f172a;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: #38bdf8;
+}
+
+/* ✅ HEADER */
 
 header {
   background: #0f172a;
@@ -11,11 +53,15 @@ header {
   text-align: center;
 }
 
+/* ✅ CONTAINER */
+
 .container {
   width: 90%;
   max-width: 1100px;
   margin: auto;
 }
+
+/* ✅ TOOLS GRID */
 
 .tools-grid {
   display: grid;
@@ -24,12 +70,21 @@ header {
   margin: 30px 0;
 }
 
+/* ✅ TOOL CARD */
+
 .tool-card {
   background: #fff;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: 0.3s;
 }
+
+.tool-card:hover {
+  transform: translateY(-5px);
+}
+
+/* ✅ BUTTON */
 
 .btn {
   display: inline-block;
@@ -39,4 +94,34 @@ header {
   color: #fff;
   text-decoration: none;
   border-radius: 6px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #1d4ed8;
+}
+
+/* ✅ FOOTER */
+
+.footer {
+  background: #0f172a;
+  color: white;
+  text-align: center;
+  padding: 25px 15px;
+  margin-top: 50px;
+}
+
+.footer-links {
+  margin-top: 10px;
+}
+
+.footer-links a {
+  color: #38bdf8;
+  margin: 0 10px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
 }
