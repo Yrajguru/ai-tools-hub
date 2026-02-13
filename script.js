@@ -23,19 +23,20 @@ const tools = [
 
 const grid = document.querySelector(".tools-grid");
 
-tools.forEach(tool => {
-  const card = document.createElement("div");
+/* ✅ SAFETY CHECK */
+if (grid) {
+  tools.forEach(tool => {
+    const card = document.createElement("div");
+    card.className = "tool-card";
 
-  /* ✅ FIXED CLASS NAME */
-  card.className = "tool-card";
+    card.innerHTML = `
+      <h3>${tool.name}</h3>
+      <p>${tool.description}</p>
+      <a href="${tool.link}" target="_blank" class="btn">
+        Try Tool
+      </a>
+    `;
 
-  card.innerHTML = `
-    <h3>${tool.name}</h3>
-    <p>${tool.description}</p>
-    <a href="${tool.link}" target="_blank" class="btn">
-      Try Tool
-    </a>
-  `;
-
-  grid.appendChild(card);
-});
+    grid.appendChild(card);
+  });
+}
