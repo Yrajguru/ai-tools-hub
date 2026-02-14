@@ -32,7 +32,10 @@ if (grid) {
     card.innerHTML = `
       <h3>${tool.name}</h3>
       <p>${tool.description}</p>
-      <a href="${tool.link}" target="_blank" class="btn">
+      <a href="${tool.link}" 
+         target="_blank" 
+         rel="noopener noreferrer"
+         class="btn">
         Try Tool
       </a>
     `;
