@@ -1,5 +1,9 @@
 /* ✅ GLOBAL STYLING */
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: Arial, sans-serif;
   background: #f5f7fb;
@@ -44,13 +48,24 @@ body {
   color: #38bdf8;
 }
 
-/* ✅ HEADER */
+/* ✅ HERO SECTION */
 
-header {
-  background: #0f172a;
-  color: #fff;
-  padding: 15px;
+.hero {
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: white;
   text-align: center;
+  padding: 60px 20px;
+}
+
+.hero h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 16px;
+  opacity: 0.9;
+  margin-bottom: 20px;
 }
 
 /* ✅ CONTAINER */
