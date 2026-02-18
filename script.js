@@ -18,7 +18,7 @@ const tools = [
     description: "Online design tool",
     link: "https://canva.com",
     icon: "icons/canva.png",
-    category: "image"
+    category: "marketing"
   },
   {
     name: "Murf AI",
@@ -32,8 +32,8 @@ const tools = [
 const grid = document.querySelector(".tools-grid");
 const categoryButtons = document.querySelectorAll(".category-card");
 
-/* ✅ Render Function */
-function renderTools(filter) {
+/* ✅ Render Tools */
+function renderTools(filter = "all") {
   if (!grid) return;
 
   grid.innerHTML = "";
@@ -67,17 +67,21 @@ function renderTools(filter) {
   });
 }
 
-/* ✅ Initial Load */
-renderTools("all");
-
 /* ✅ Category Click Logic */
 categoryButtons.forEach(button => {
   button.addEventListener("click", () => {
-
+    
+    /* Remove active from all */
     categoryButtons.forEach(btn => btn.classList.remove("active"));
+
+    /* Add active to clicked */
     button.classList.add("active");
 
     const category = button.getAttribute("data-category");
+
     renderTools(category);
   });
 });
+
+/* ✅ Initial Load */
+renderTools();
