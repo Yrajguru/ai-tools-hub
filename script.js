@@ -3,47 +3,60 @@ const tools = [
     name: "ChatGPT",
     description: "AI chatbot by OpenAI",
     link: "https://chat.openai.com",
-    icon: "icons/chatgpt.png",
-    category: "chatbot"
+    category: "chatbot",
+    icon: "icons/chatgpt.png"
   },
   {
     name: "Midjourney",
     description: "AI image generator",
     link: "https://midjourney.com",
-    icon: "icons/midjourney.png",
-    category: "image"
+    category: "image",
+    icon: "icons/midjourney.png"
   },
   {
     name: "Canva",
     description: "Online design tool",
     link: "https://canva.com",
-    icon: "icons/canva.png",
-    category: "marketing"
+    category: "marketing",
+    icon: "icons/canva.png"
   },
   {
     name: "Murf AI",
     description: "Create realistic AI voiceovers",
     link: "https://get.murf.ai/1glkpzlo398s",
-    icon: "icons/murf.png",
-    category: "voice"
+    category: "voice",
+    icon: "icons/murf.png"
   }
 ];
 
 const grid = document.querySelector(".tools-grid");
-const categoryButtons = document.querySelectorAll(".category-card");
+const searchInput = document.getElementById("searchInput");
+const categoryCards = document.querySelectorAll(".category-card");
+
+let activeCategory = "all";
 
 /* ✅ Render Tools */
-function renderTools(filter = "all") {
+function renderTools(filterText = "") {
   if (!grid) return;
 
   grid.innerHTML = "";
 
-  const filteredTools =
-    filter === "all"
-      ? tools
-      : tools.filter(tool => tool.category === filter);
+  const filtered = tools.filter(tool => {
+    const matchesCategory =
+      activeCategory === "all" || tool.category === activeCategory;
 
-  filteredTools.forEach(tool => {
+    const matchesSearch =
+      tool.name.toLowerCase().includes(filterText.toLowerCase());
+
+    return matchesCategory && matchesSearch;
+  });
+
+  if (filtered.length === 0) {
+    grid.innerHTML = `<p class="empty-state">No tools found 😔</p>`;
+    return;
+  }
+
+  filtered.forEach(tool => {
     const card = document.createElement("div");
     card.className = "tool-card";
 
@@ -52,9 +65,7 @@ function renderTools(filter = "all") {
         <img src="${tool.icon}" alt="${tool.name}" class="tool-icon">
         <h3>${tool.name}</h3>
       </div>
-
       <p>${tool.description}</p>
-
       <a href="${tool.link}" 
          target="_blank" 
          rel="noopener noreferrer"
@@ -67,21 +78,24 @@ function renderTools(filter = "all") {
   });
 }
 
-/* ✅ Category Click Logic */
-categoryButtons.forEach(button => {
-  button.addEventListener("click", () => {
-    
-    /* Remove active from all */
-    categoryButtons.forEach(btn => btn.classList.remove("active"));
+/* ✅ Category Click */
+categoryCards.forEach(card => {
+  card.addEventListener("click", () => {
+    categoryCards.forEach(c => c.classList.remove("active"));
+    card.classList.add("active");
 
-    /* Add active to clicked */
-    button.classList.add("active");
+    activeCategory = card.dataset.category;
 
-    const category = button.getAttribute("data-category");
-
-    renderTools(category);
+    renderTools(searchInput?.value || "");
   });
 });
+
+/* ✅ Search Typing */
+if (searchInput) {
+  searchInput.addEventListener("input", e => {
+    renderTools(e.target.value);
+  });
+}
 
 /* ✅ Initial Load */
 renderTools();
