@@ -32,6 +32,7 @@ const tools = [
 const grid = document.querySelector(".tools-grid");
 const searchInput = document.getElementById("searchInput");
 const categoryCards = document.querySelectorAll(".category-card");
+const toolsStatus = document.getElementById("toolsStatus");
 
 let activeCategory = "all";
 
@@ -50,6 +51,11 @@ function renderTools(filterText = "") {
 
     return matchesCategory && matchesSearch;
   });
+
+  /* 🔢 Update Counter */
+  if (toolsStatus) {
+    toolsStatus.textContent = `${filtered.length} Tools Found`;
+  }
 
   if (filtered.length === 0) {
     grid.innerHTML = `<p class="empty-state">No tools found 😔</p>`;
