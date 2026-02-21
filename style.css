@@ -176,6 +176,10 @@ body {
   text-align: center;
 }
 
+.search-bar {
+  margin-top: 10px;
+}
+
 #searchInput {
   width: 100%;
   max-width: 400px;
@@ -191,6 +195,17 @@ body {
 #searchInput:focus {
   border-color: #2563eb;
   box-shadow: 0 6px 18px rgba(37, 99, 235, 0.25);
+}
+
+/* ✅ TOOLS STATUS / COUNTER */
+
+.tools-status {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #2563eb;
+  margin-top: 5px;
+  margin-bottom: 10px;
 }
 
 /* ✅ TOOLS GRID */
@@ -250,6 +265,24 @@ body {
   color: #475569;
   line-height: 1.5;
   min-height: 40px;
+}
+
+/* 🏷 TOOL TAGS (NEW) */
+
+.tool-tags {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.tag {
+  display: inline-block;
+  background: #e2e8f0;
+  color: #334155;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 8px;
+  border-radius: 20px;
+  margin: 3px 4px 0 0;
 }
 
 /* ✅ EMPTY STATE */
