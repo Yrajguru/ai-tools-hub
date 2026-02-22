@@ -36,9 +36,50 @@ const tools = [
 const grid = document.querySelector(".tools-grid");
 const searchInput = document.getElementById("searchInput");
 const categoryCards = document.querySelectorAll(".category-card");
-const toolsStatus = document.getElementById("toolsCount");
+const toolsStatus = document.getElementById("toolsStatus");
 
 let activeCategory = "all";
+
+/* ✅ Create Modal Dynamically */
+function createModal() {
+  const modal = document.createElement("div");
+  modal.className = "modal-overlay";
+  modal.innerHTML = `
+    <div class="modal-box">
+      <span class="modal-close">&times;</span>
+      <img class="modal-icon" src="" alt="">
+      <h2 class="modal-title"></h2>
+      <p class="modal-desc"></p>
+      <a class="btn modal-btn" target="_blank">Visit Tool</a>
+    </div>
+  `;
+  document.body.appendChild(modal);
+
+  const closeBtn = modal.querySelector(".modal-close");
+  closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+
+  return modal;
+}
+
+const modal = createModal();
+
+/* ✅ Open Modal */
+function openModal(tool) {
+  modal.style.display = "flex";
+
+  modal.querySelector(".modal-icon").src = tool.icon;
+  modal.querySelector(".modal-title").textContent = tool.name;
+  modal.querySelector(".modal-desc").textContent = tool.description;
+  modal.querySelector(".modal-btn").href = tool.link;
+}
 
 /* ✅ Render Tools */
 function renderTools(filterText = "") {
@@ -56,18 +97,16 @@ function renderTools(filterText = "") {
     return matchesCategory && matchesSearch;
   });
 
-  /* 🔢 Update Counter (Grammar Fix) */
+  /* 🔢 Update Counter */
   if (toolsStatus) {
-    toolsStatus.textContent = `${filtered.length} Tool${filtered.length !== 1 ? "s" : ""} Found`;
+    toolsStatus.textContent = `${filtered.length} Tools Found`;
   }
 
-  /* 😔 Empty State */
   if (filtered.length === 0) {
     grid.innerHTML = `<p class="empty-state">No tools found 😔</p>`;
     return;
   }
 
-  /* ✅ Create Cards */
   filtered.forEach(tool => {
     const card = document.createElement("div");
     card.className = "tool-card";
@@ -83,13 +122,13 @@ function renderTools(filterText = "") {
       </div>
       <p>${tool.description}</p>
       <div class="tool-tags">${tagsHTML}</div>
-      <a href="${tool.link}" 
-         target="_blank" 
-         rel="noopener noreferrer"
-         class="btn">
-        Try Tool
-      </a>
+      <button class="btn try-btn">Try Tool</button>
     `;
+
+    /* 🎯 Modal Click */
+    card.querySelector(".try-btn").addEventListener("click", () => {
+      openModal(tool);
+    });
 
     grid.appendChild(card);
   });
