@@ -57,17 +57,6 @@ body {
   padding: 60px 20px;
 }
 
-.hero h1 {
-  font-size: 32px;
-  margin-bottom: 10px;
-}
-
-.hero p {
-  font-size: 16px;
-  opacity: 0.9;
-  margin-bottom: 20px;
-}
-
 /* ⭐ FEATURED TOOL */
 
 .featured-tool {
@@ -122,13 +111,7 @@ body {
   font-size: 14px;
   font-weight: 600;
   box-shadow: 0 4px 10px rgba(0,0,0,0.06);
-  transition: all 0.25s ease;
   cursor: pointer;
-}
-
-.category-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
 }
 
 .category-card.active {
@@ -149,15 +132,6 @@ body {
   padding: 12px 14px;
   border-radius: 10px;
   border: 1px solid #cbd5f5;
-  font-size: 14px;
-  outline: none;
-  transition: 0.25s;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-}
-
-#searchInput:focus {
-  border-color: #2563eb;
-  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.25);
 }
 
 /* 🔢 TOOLS STATUS */
@@ -186,37 +160,11 @@ body {
   padding: 22px;
   border-radius: 14px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-  transition: 0.25s ease;
-}
-
-.tool-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
 }
 
 .tool-icon {
   width: 42px;
   height: 42px;
-  object-fit: contain;
-}
-
-.card-top {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-
-.tool-card h3 {
-  margin: 0;
-  font-size: 18px;
-  color: #0f172a;
-}
-
-.tool-card p {
-  font-size: 14px;
-  color: #475569;
-  line-height: 1.5;
 }
 
 /* 🏷 TOOL TAGS */
@@ -233,34 +181,6 @@ body {
   padding: 5px 10px;
   border-radius: 20px;
   margin: 4px 4px 0 0;
-  font-weight: 500;
-}
-
-/* ❌ EMPTY STATE */
-
-.empty-state {
-  text-align: center;
-  font-size: 14px;
-  color: #64748b;
-  padding: 20px;
-}
-
-/* ✅ BUTTON */
-
-.btn {
-  display: inline-block;
-  margin-top: 14px;
-  padding: 10px 15px;
-  background: #2563eb;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 8px;
-  font-size: 14px;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  background: #1d4ed8;
 }
 
 /* ========================= */
@@ -275,16 +195,6 @@ body {
   box-shadow: 0 6px 18px rgba(0,0,0,0.06);
 }
 
-.about-section h1 {
-  color: #0f172a;
-  margin-bottom: 10px;
-}
-
-.about-section p {
-  color: #475569;
-  line-height: 1.6;
-}
-
 .about-highlights {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -292,11 +202,57 @@ body {
   margin-top: 25px;
 }
 
-.highlight-box {
-  background: #f1f5f9;
-  padding: 15px;
-  border-radius: 12px;
+/* ======================= */
+/* ✅ CONTACT PAGE STYLING */
+/* ======================= */
+
+.contact-section {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.contact-subtitle {
+  color: #64748b;
   font-size: 14px;
+  margin-bottom: 25px;
+}
+
+.contact-card {
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  max-width: 500px;
+  margin: auto;
+}
+
+.contact-label {
+  font-weight: 600;
+  color: #2563eb;
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* ✅ Contact Form */
+
+.contact-form {
+  margin-top: 35px;
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #cbd5f5;
 }
 
 /* ✅ FOOTER */
@@ -307,19 +263,4 @@ body {
   text-align: center;
   padding: 25px 15px;
   margin-top: 60px;
-}
-
-.footer-links {
-  margin-top: 10px;
-}
-
-.footer-links a {
-  color: #38bdf8;
-  margin: 0 10px;
-  text-decoration: none;
-  font-size: 14px;
-}
-
-.footer-links a:hover {
-  text-decoration: underline;
 }
