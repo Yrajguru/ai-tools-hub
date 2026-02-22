@@ -4,35 +4,39 @@ const tools = [
     description: "AI chatbot by OpenAI",
     link: "https://chat.openai.com",
     category: "chatbot",
-    icon: "icons/chatgpt.png"
+    icon: "icons/chatgpt.png",
+    tags: ["AI", "Chatbot", "Productivity"]
   },
   {
     name: "Midjourney",
     description: "AI image generator",
     link: "https://midjourney.com",
     category: "image",
-    icon: "icons/midjourney.png"
+    icon: "icons/midjourney.png",
+    tags: ["AI", "Images", "Design"]
   },
   {
     name: "Canva",
     description: "Online design tool",
     link: "https://canva.com",
     category: "marketing",
-    icon: "icons/canva.png"
+    icon: "icons/canva.png",
+    tags: ["Design", "Marketing", "Social Media"]
   },
   {
     name: "Murf AI",
     description: "Create realistic AI voiceovers",
     link: "https://get.murf.ai/1glkpzlo398s",
     category: "voice",
-    icon: "icons/murf.png"
+    icon: "icons/murf.png",
+    tags: ["Voice", "AI", "Audio"]
   }
 ];
 
 const grid = document.querySelector(".tools-grid");
 const searchInput = document.getElementById("searchInput");
 const categoryCards = document.querySelectorAll(".category-card");
-const toolsStatus = document.getElementById("toolsStatus");
+const toolsStatus = document.getElementById("toolsCount");
 
 let activeCategory = "all";
 
@@ -52,19 +56,25 @@ function renderTools(filterText = "") {
     return matchesCategory && matchesSearch;
   });
 
-  /* 🔢 Update Counter */
+  /* 🔢 Update Counter (Grammar Fix) */
   if (toolsStatus) {
-    toolsStatus.textContent = `${filtered.length} Tools Found`;
+    toolsStatus.textContent = `${filtered.length} Tool${filtered.length !== 1 ? "s" : ""} Found`;
   }
 
+  /* 😔 Empty State */
   if (filtered.length === 0) {
     grid.innerHTML = `<p class="empty-state">No tools found 😔</p>`;
     return;
   }
 
+  /* ✅ Create Cards */
   filtered.forEach(tool => {
     const card = document.createElement("div");
     card.className = "tool-card";
+
+    const tagsHTML = tool.tags
+      .map(tag => `<span class="tool-tag">${tag}</span>`)
+      .join("");
 
     card.innerHTML = `
       <div class="card-top">
@@ -72,6 +82,7 @@ function renderTools(filterText = "") {
         <h3>${tool.name}</h3>
       </div>
       <p>${tool.description}</p>
+      <div class="tool-tags">${tagsHTML}</div>
       <a href="${tool.link}" 
          target="_blank" 
          rel="noopener noreferrer"
