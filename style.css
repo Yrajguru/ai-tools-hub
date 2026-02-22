@@ -126,6 +126,11 @@ body {
   cursor: pointer;
 }
 
+.category-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+}
+
 .category-card.active {
   background: #2563eb;
   color: white;
@@ -144,6 +149,15 @@ body {
   padding: 12px 14px;
   border-radius: 10px;
   border: 1px solid #cbd5f5;
+  font-size: 14px;
+  outline: none;
+  transition: 0.25s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+#searchInput:focus {
+  border-color: #2563eb;
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.25);
 }
 
 /* 🔢 TOOLS STATUS */
@@ -172,14 +186,40 @@ body {
   padding: 22px;
   border-radius: 14px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: 0.25s ease;
+}
+
+.tool-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
 }
 
 .tool-icon {
   width: 42px;
   height: 42px;
+  object-fit: contain;
 }
 
-/* 🏷 TOOL TAGS (NEW) */
+.card-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.tool-card h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #0f172a;
+}
+
+.tool-card p {
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.5;
+}
+
+/* 🏷 TOOL TAGS */
 
 .tool-tags {
   margin-top: 10px;
@@ -194,6 +234,33 @@ body {
   border-radius: 20px;
   margin: 4px 4px 0 0;
   font-weight: 500;
+}
+
+/* ❌ EMPTY STATE */
+
+.empty-state {
+  text-align: center;
+  font-size: 14px;
+  color: #64748b;
+  padding: 20px;
+}
+
+/* ✅ BUTTON */
+
+.btn {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 10px 15px;
+  background: #2563eb;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #1d4ed8;
 }
 
 /* ========================= */
@@ -240,4 +307,19 @@ body {
   text-align: center;
   padding: 25px 15px;
   margin-top: 60px;
+}
+
+.footer-links {
+  margin-top: 10px;
+}
+
+.footer-links a {
+  color: #38bdf8;
+  margin: 0 10px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
 }
