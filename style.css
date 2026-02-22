@@ -160,17 +160,32 @@ body {
   padding: 22px;
   border-radius: 14px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: 0.25s ease;
+}
+
+.tool-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
 }
 
 .tool-icon {
   width: 42px;
   height: 42px;
+  object-fit: contain;
+}
+
+.card-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
 /* 🏷 TOOL TAGS */
 
 .tool-tags {
   margin-top: 10px;
+  margin-bottom: 12px;   /* ✅ FIXED spacing */
 }
 
 .tool-tag {
@@ -181,6 +196,33 @@ body {
   padding: 5px 10px;
   border-radius: 20px;
   margin: 4px 4px 0 0;
+}
+
+/* ❌ EMPTY STATE */
+
+.empty-state {
+  text-align: center;
+  font-size: 14px;
+  color: #64748b;
+  padding: 20px;
+}
+
+/* ✅ BUTTON */
+
+.btn {
+  display: inline-block;
+  margin-top: 8px;   /* ✅ FIXED gap from tags */
+  padding: 10px 15px;
+  background: #2563eb;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #1d4ed8;
 }
 
 /* ========================= */
