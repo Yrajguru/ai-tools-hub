@@ -2,7 +2,7 @@ const tools = [
   {
     name: "ChatGPT",
     description: "AI chatbot by OpenAI",
-    link: "https://chat.openai.com",
+    link: "chatgpt.html",   // ✅ INTERNAL PAGE
     category: "chatbot",
     icon: "icons/chatgpt.png",
     tags: ["AI", "Chatbot", "Productivity"]
@@ -38,48 +38,16 @@ const searchInput = document.getElementById("searchInput");
 const categoryCards = document.querySelectorAll(".category-card");
 const toolsStatus = document.getElementById("toolsStatus");
 
+/* ✅ Modal Elements */
+const modal = document.getElementById("toolModal");
+const closeModal = document.getElementById("closeModal");
+const modalIcon = document.getElementById("modalIcon");
+const modalTitle = document.getElementById("modalTitle");
+const modalDescription = document.getElementById("modalDescription");
+const modalTags = document.getElementById("modalTags");
+const modalLink = document.getElementById("modalLink");
+
 let activeCategory = "all";
-
-/* ✅ Create Modal Dynamically */
-function createModal() {
-  const modal = document.createElement("div");
-  modal.className = "modal-overlay";
-  modal.innerHTML = `
-    <div class="modal-box">
-      <span class="modal-close">&times;</span>
-      <img class="modal-icon" src="" alt="">
-      <h2 class="modal-title"></h2>
-      <p class="modal-desc"></p>
-      <a class="btn modal-btn" target="_blank">Visit Tool</a>
-    </div>
-  `;
-  document.body.appendChild(modal);
-
-  const closeBtn = modal.querySelector(".modal-close");
-  closeBtn.addEventListener("click", () => {
-    modal.style.display = "none";
-  });
-
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) {
-      modal.style.display = "none";
-    }
-  });
-
-  return modal;
-}
-
-const modal = createModal();
-
-/* ✅ Open Modal */
-function openModal(tool) {
-  modal.style.display = "flex";
-
-  modal.querySelector(".modal-icon").src = tool.icon;
-  modal.querySelector(".modal-title").textContent = tool.name;
-  modal.querySelector(".modal-desc").textContent = tool.description;
-  modal.querySelector(".modal-btn").href = tool.link;
-}
 
 /* ✅ Render Tools */
 function renderTools(filterText = "") {
@@ -97,7 +65,7 @@ function renderTools(filterText = "") {
     return matchesCategory && matchesSearch;
   });
 
-  /* 🔢 Update Counter */
+  /* 🔢 Status Bar */
   if (toolsStatus) {
     toolsStatus.textContent = `${filtered.length} Tools Found`;
   }
@@ -122,11 +90,11 @@ function renderTools(filterText = "") {
       </div>
       <p>${tool.description}</p>
       <div class="tool-tags">${tagsHTML}</div>
-      <button class="btn try-btn">Try Tool</button>
+      <button class="btn details-btn">View Details</button>
     `;
 
-    /* 🎯 Modal Click */
-    card.querySelector(".try-btn").addEventListener("click", () => {
+    /* ✅ Modal Open */
+    card.querySelector(".details-btn").addEventListener("click", () => {
       openModal(tool);
     });
 
@@ -134,7 +102,40 @@ function renderTools(filterText = "") {
   });
 }
 
-/* ✅ Category Click */
+/* ✅ Open Modal */
+function openModal(tool) {
+  if (!modal) return;
+
+  modalIcon.src = tool.icon;
+  modalTitle.textContent = tool.name;
+  modalDescription.textContent = tool.description;
+
+  modalTags.innerHTML = tool.tags
+    .map(tag => `<span class="tool-tag">${tag}</span>`)
+    .join("");
+
+  modalLink.href = tool.link;
+
+  modal.style.display = "flex";
+}
+
+/* ✅ Close Modal */
+if (closeModal) {
+  closeModal.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+}
+
+/* ✅ Close on Overlay Click */
+if (modal) {
+  modal.addEventListener("click", e => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+}
+
+/* ✅ Category Filter */
 categoryCards.forEach(card => {
   card.addEventListener("click", () => {
     categoryCards.forEach(c => c.classList.remove("active"));
@@ -146,7 +147,7 @@ categoryCards.forEach(card => {
   });
 });
 
-/* ✅ Search Typing */
+/* ✅ Search */
 if (searchInput) {
   searchInput.addEventListener("input", e => {
     renderTools(e.target.value);
