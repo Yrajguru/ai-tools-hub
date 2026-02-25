@@ -49,6 +49,11 @@ const modalLink = document.getElementById("modalLink");
 
 let activeCategory = "all";
 
+/* ✅ Helper → Detect Internal Link */
+function isInternalLink(link) {
+  return link.endsWith(".html");
+}
+
 /* ✅ Render Tools */
 function renderTools(filterText = "") {
   if (!grid) return;
@@ -93,8 +98,17 @@ function renderTools(filterText = "") {
       <button class="btn details-btn">View Details</button>
     `;
 
-    /* ✅ Modal Open */
-    card.querySelector(".details-btn").addEventListener("click", () => {
+    const btn = card.querySelector(".details-btn");
+
+    btn.addEventListener("click", () => {
+
+      /* ✅ INTERNAL PAGE → Direct Open */
+      if (isInternalLink(tool.link)) {
+        window.location.href = tool.link;
+        return;
+      }
+
+      /* ✅ EXTERNAL TOOL → Open Modal */
       openModal(tool);
     });
 
