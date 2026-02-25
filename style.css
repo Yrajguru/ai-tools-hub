@@ -112,6 +112,12 @@ body {
   font-weight: 600;
   box-shadow: 0 4px 10px rgba(0,0,0,0.06);
   cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
 }
 
 .category-card.active {
@@ -132,6 +138,15 @@ body {
   padding: 12px 14px;
   border-radius: 10px;
   border: 1px solid #cbd5f5;
+  font-size: 14px;
+  outline: none;
+  transition: 0.25s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+#searchInput:focus {
+  border-color: #2563eb;
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.25);
 }
 
 /* 🔢 TOOLS STATUS */
@@ -226,7 +241,7 @@ body {
 }
 
 /* ========================= */
-/* ✅ MODAL STYLING (NEW) */
+/* ✅ MODAL STYLING */
 /* ========================= */
 
 .modal-overlay {
@@ -255,14 +270,8 @@ body {
 }
 
 @keyframes modalPop {
-  from {
-    transform: scale(0.9);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }
 
 .modal-close {
@@ -285,18 +294,52 @@ body {
   margin-bottom: 10px;
 }
 
-.modal-box h2 {
-  margin: 10px 0 5px;
+/* ========================= */
+/* ✅ TOOL DETAIL PAGE */
+/* ========================= */
+
+.tool-detail {
+  margin-top: 40px;
+}
+
+.tool-detail-card {
+  background: white;
+  padding: 35px;
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.detail-icon {
+  width: 70px;
+  margin-bottom: 15px;
+}
+
+.detail-description {
+  color: #475569;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.detail-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.secondary-btn {
+  background: #e2e8f0;
   color: #0f172a;
 }
 
-.modal-box p {
-  font-size: 14px;
-  color: #475569;
+.secondary-btn:hover {
+  background: #cbd5f5;
 }
 
 /* ========================= */
-/* ✅ ABOUT PAGE ENHANCEMENT */
+/* ✅ ABOUT PAGE */
 /* ========================= */
 
 .about-section {
@@ -315,18 +358,12 @@ body {
 }
 
 /* ======================= */
-/* ✅ CONTACT PAGE STYLING */
+/* ✅ CONTACT PAGE */
 /* ======================= */
 
 .contact-section {
   margin-top: 40px;
   text-align: center;
-}
-
-.contact-subtitle {
-  color: #64748b;
-  font-size: 14px;
-  margin-bottom: 25px;
 }
 
 .contact-card {
@@ -337,15 +374,6 @@ body {
   max-width: 500px;
   margin: auto;
 }
-
-.contact-label {
-  font-weight: 600;
-  color: #2563eb;
-  display: block;
-  margin-bottom: 4px;
-}
-
-/* ✅ Contact Form */
 
 .contact-form {
   margin-top: 35px;
